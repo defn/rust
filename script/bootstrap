@@ -16,7 +16,9 @@ function bootstrap {
       local url_rust='https://static.rust-lang.org/dist/rust-1.7.0-x86_64-unknown-linux-gnu.tar.gz'
       local fnm_rust='rust-1.7.0-x86_64-unknown-linux-gnu.tar.gz'
       cache curl "$fnm_rust" "$url_rust"
-      tar xvfz "${BASEBOX_CACHE}/curl/$fnm_rust"
+      mkdir -p "$shome/vendor"
+      (cd "$shome/vendor" && tar xvfz "${BASEBOX_CACHE}/curl/$fnm_rust")
+      (cd "$shome/vendor/rust-1.7.0-x86_64-unknown-linux-gnu" && sudo ./install.sh --destdir="$shome/vendor/rust")
       ;;
   esac
 }
