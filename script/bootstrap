@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  case "$(uname -s)" in
+    Darwin)
+      local url_rust='https://static.rust-lang.org/dist/rust-1.7.0-x86_64-apple-darwin.pkg'
+      local fnm_rust='rust-1.7.0-x86_64-apple-darwin.pkg'
+      cache curl "$fnm_rust" "$url_rust"
+      app compile pkg "${BASEBOX_CACHE}/curl/$fnm_rust"
+      ;;
+
+    Linux)
+      local url_rust='https://static.rust-lang.org/dist/rust-1.7.0-x86_64-unknown-linux-gnu.tar.gz'
+      local fnm_rust='rust-1.7.0-x86_64-unknown-linux-gnu.tar.gz'
+      cache curl "$fnm_rust" "$url_rust"
+      tar xvfz "${BASEBOX_CACHE}/curl/$fnm_rust"
+      ;;
+  esac
+}
+
+bootstrap

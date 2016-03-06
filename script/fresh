@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  if [[ -x "$(type -P rustc)" ]]; then
+    return 0
+  fi
+
+  return 1
+}
+
+source sub "$BASH_SOURCE" "$@"
