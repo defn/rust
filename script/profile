@@ -2,7 +2,7 @@
 
 function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
-  PATH="$shome/bin:$shome/exec:$shome/vendor/rust/usr/local/bin:$PATH"
+  PATH="$shome/bin:$shome/vendor/rust/usr/local/bin:$PATH"
 }
 
 profile
