@@ -9,7 +9,7 @@ function bootstrap {
       local url_rust='https://static.rust-lang.org/dist/rust-1.7.0-x86_64-apple-darwin.pkg'
       local fnm_rust='rust-1.7.0-x86_64-apple-darwin.pkg'
       cache curl "$fnm_rust" "$url_rust"
-      app compile pkg "${BASEBOX_CACHE}/curl/$fnm_rust"
+      block compile pkg "${BASEBOX_CACHE}/curl/$fnm_rust"
       ;;
 
     Linux)
