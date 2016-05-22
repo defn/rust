@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_rust="$(rustc --version 2>&- | awk 'NR == 1 {print $2}')"
+  local ver_cargo="$(cargo --version 2>&- | awk 'NR == 1 {print $2}')"
+  jq -n \
+    --arg rust "$ver_rust" \
+    --arg cargo "$ver_cargo" \
+    '{rust: $rust, cargo: $cargo}'
+}
+
+version "$@"
