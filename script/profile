@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function profile {
-  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  local shome="${_rust_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/vendor/rust/usr/local/bin:$PATH"
 }
 
