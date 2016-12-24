@@ -4,11 +4,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ -x "$(type -P rustc)" ]]; then
-    return 0
+  if [[ "$($shome/script/version | jq -r '.rust')" != "$RUST_VERSION" ]]; then
+    return 1
   fi
 
-  return 1
+  return 0
 }
 
 source sub "$BASH_SOURCE" "$@"
