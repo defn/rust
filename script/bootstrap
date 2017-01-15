@@ -10,7 +10,7 @@ function bootstrap {
       local fnm_rust="rust-${RUST_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
       cache curl "$fnm_rust" "$url_rust"
       mkdir -p "$shome/vendor"
-      (cd "$shome/vendor" && tar xvfz "${BASEBOX_CACHE}/curl/$fnm_rust")
+      (cd "$shome/vendor" && tar xfz "${BASEBOX_CACHE}/curl/$fnm_rust")
       (cd "$shome/vendor/rust-${RUST_VERSION}-x86_64-apple-darwin" && sudo ./install.sh --destdir="$shome/vendor/rust")
       rm -rf "$shome/vendor/rust-${RUST_VERSION}-x86_64-apple-darwin"
       ;;
@@ -20,7 +20,7 @@ function bootstrap {
       local fnm_rust="rust-${RUST_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
       cache curl "$fnm_rust" "$url_rust"
       mkdir -p "$shome/vendor"
-      (cd "$shome/vendor" && tar xvfz "${BASEBOX_CACHE}/curl/$fnm_rust")
+      (cd "$shome/vendor" && tar xfz "${BASEBOX_CACHE}/curl/$fnm_rust")
       (cd "$shome/vendor/rust-${RUST_VERSION}-x86_64-unknown-linux-gnu" && sudo ./install.sh --destdir="$shome/vendor/rust")
       rm -rf "shome/vendor/rust-${RUST_VERSION}-x86_64-unknown-linux-gnu"
       ;;
