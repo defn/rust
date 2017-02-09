@@ -3,7 +3,7 @@
 function profile {
   local shome="${_rust_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
 
-  RUST_VERSION='1.15.0'
+  RUST_VERSION='1.15.1'
   PATH="$shome/bin:$shome/vendor/rust-${RUST_VERSION}/usr/local/bin:$PATH"
 }
 
