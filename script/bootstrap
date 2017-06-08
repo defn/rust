@@ -20,6 +20,7 @@ function bootstrap {
   mkdir -p "$shome/vendor"
   (cd "$shome/vendor" && tar xfz "/data/cache/curl/$fnm_rust")
   (set +f; cd "$shome/vendor/rust-${RUST_VERSION}-"* && ./install.sh --destdir="$shome/vendor/rust-${RUST_VERSION}" --verbose) || true
+  ln -nfs "rust-${RUST_VERSION}"  "$shome/vendor/rust"
   rm -rf "$shome/vendor/rust-${RUST_VERSION}-"*
 }
 
